@@ -34,6 +34,6 @@ app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db) });
 app.put('/image', (req, res) => { image.handleImage(req, res, db) });
 app.post('/imageurl', (req, res) => { image.handleAPI(req, res) });
 
-app.listen(3001, () => {
-	console.log(">>> app is running on 'localhost' port: 3001 (127.0.0.1:3001).")
+app.listen(process.env.PORT || 3001, () => {
+	console.log(`>>> app is running on port: ${process.env.PORT}`)
 })
