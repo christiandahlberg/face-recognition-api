@@ -12,7 +12,7 @@ const handleRegister = (req, res, db, bcrypt) => {
         !emailPattern.test(email)) {
     	return res.status(400).json("Incorrect form submission (empty fields or wrong email structure)");
     }
-    
+
 	const hash = bcrypt.hashSync(password, salt);
 
 	db.transaction(trx => {
@@ -38,7 +38,7 @@ const handleRegister = (req, res, db, bcrypt) => {
 		.catch(trx.rollback)
 	})
 
-	.catch(err => res.status(400).json('Unable to register.'))
+	.catch(err => res.status(400).json(err))
 
 }
 
